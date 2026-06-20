@@ -434,6 +434,20 @@ ul {
   display: block
 }
 
+.graph-live-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: .75rem;
+  min-width: 600px;
+  /* ghchart returns a light-background SVG; invert in dark mode */
+  filter: invert(1) hue-rotate(175deg) saturate(0.85) brightness(0.88);
+}
+
+html.light .graph-live-img {
+  filter: none;
+}
+
 .graph-footer {
   display: flex;
   flex-direction: column;

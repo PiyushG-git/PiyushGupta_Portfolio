@@ -1,59 +1,71 @@
 /* ── DATA ───────────────────────────────────────────────────── */
 const DATA = {
   techStack: [
+    // Programming Languages
     { name:'JavaScript', icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
     { name:'TypeScript', icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
-    { name:'Python',     icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+    { name:'C',          icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
     { name:'C++',        icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
+    { name:'Python',     icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+    // Frontend
     { name:'React.js',   icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
-    { name:'Vue.js',     icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
+    { name:'HTML5',      icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
+    { name:'CSS3',       icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
+    // Backend & AI
     { name:'Node.js',    icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
     { name:'Express.js', icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg', invert:true },
-    { name:'Next.js',    icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg', invert:true },
-    { name:'Flask',      icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg', invert:true },
+    { name:'Golang',     icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg' },
+    { name:'LangChain',  icon:'https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/langchain.png' },
+    // Databases
     { name:'MongoDB',    icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+    { name:'PostgreSQL', icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
     { name:'Redis',      icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
-    { name:'MySQL',      icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
-    { name:'Docker',     icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+    // Tools & Cloud
     { name:'Git',        icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+    { name:'GitHub',     icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg', invert:true },
+    { name:'Docker',     icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+    { name:'Kubernetes', icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg' },
+    { name:'AWS',        icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
+    { name:'Postman',    icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg' },
+    { name:'Vercel',     icon:'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg', invert:true },
   ],
 
   projects: [
     {
-      title:'Pixora | Social Media Platform',
-      desc:'A scalable MERN-based social media platform with optimized MongoDB queries and a modular React frontend using Context API, custom hooks, and layered architecture.',
-      tags:['React.js','Node.js','Express.js','MongoDB','Redis','JWT','ImageKit'],
-      image:'images/projects/pixora.png',
+      title:'HostelMart | Campus Marketplace',
+      desc:'A centralized peer-to-peer campus marketplace with the MERN stack, onboarding 10+ active users and reducing unstructured WhatsApp selling messages by 90%. Features scalable RESTful APIs, optimized MongoDB data modeling, dynamic category filtering, debounced search, JWT + Google OAuth authentication, and ImageKit-based cloud image upload.',
+      tags:['React.js','Node.js','Express.js','MongoDB','JWT','Google OAuth','ImageKit','Multer'],
+      image:'images/HostelMart.png',
       bg:'#1a0a2e', border:'#5b21b6',
-      github:'https://github.com/piyushg251004',
-      live:'#',
+      github:'https://github.com/PiyushG-git/HostelMate',
+      live:'https://hostelmate-q8lq.onrender.com/',
+    },
+    {
+      title:'QueryDesk | AI-Powered Chat Platform',
+      desc:'A production-grade full-stack AI platform integrating Google Gemini and Mistral AI via LangChain with Tavily API for autonomous real-time web search. Features a multi-session chatbot with persistent history and real-time LLM streaming via Socket.io, plus a Seller Agent System with configurable negotiation strategies accessible via unique shareable URLs.',
+      tags:['React.js','Node.js','Express.js','MongoDB','LangChain','Socket.io','Google Gemini','Mistral AI'],
+      image:'images/QueryDesk.png',
+      bg:'#0c1445', border:'#3730a3',
+      github:'https://github.com/PiyushG-git/QueryDesk',
+      live:'https://query-desk-puce.vercel.app/login',
     },
     {
       title:'FixMyRoad | AI Road Damage Detector',
-      desc:'An automated damage assessment pipeline using Computer Vision, achieving 92% detection accuracy on user-uploaded geo-tagged images to validate road conditions.',
+      desc:'An automated road damage assessment pipeline using Computer Vision with 92% detection accuracy on geo-tagged images. Features a secure, role-based Flask dashboard that reduced manual verification time by 40% through automated filtering, plus a priority-ranking algorithm that synthesizes community upvotes to escalate critical infrastructure failures.',
       tags:['Flask','MongoDB','Computer Vision','Python','Role-Based Auth'],
       image:'images/projects/fixmyroad.png',
       bg:'#052e16', border:'#166534',
-      github:'https://github.com/piyushg251004',
-      live:'#',
-    },
-    {
-      title:'AI Image Generator SaaS',
-      desc:'A full-stack SaaS platform with Stripe payment integration, credit-based system, and Clipdrop API for text-to-image generation with optimized request handling.',
-      tags:['MERN Stack','Clipdrop API','Stripe','JWT','Auth'],
-      image:'images/projects/ai-image-gen.png',
-      bg:'#0c1445', border:'#3730a3',
-      github:'https://github.com/piyushg251004',
-      live:'#',
+      github:'https://github.com/PiyushG-git/fixmyroad',
+      live:'https://fixmyroad-65da.onrender.com/',
     },
   ],
 
   achievements: [
-    { title:'CodeChef 2-Star', desc:'Achieved a 2-Star rating with a peak rating of 1568 in algorithmic contests on CodeChef.', rank:'2-Star • 1568', year:'2024' },
-    { title:'LeetCode — 310+ Problems', desc:'Solved 310+ problems with a maximum rating of 1658; strong proficiency in DSA.', rank:'Max Rating: 1658', year:'2025' },
-    { title:'DevQuest Web App Competition', desc:'Secured 4th place at DevQuest, a national-level web application competition.', rank:'4th Place', year:'2024' },
-    { title:'Tantrafiesta Official Website', desc:'Led development of the official fest site reaching 4,000+ global impressions.', rank:'4,000+ Impressions', year:'2024' },
-    { title:'Abhivyakti Digital Campaign', desc:'Generated 10 Lakh+ impressions through digital campaigns on Unstop as Senior Marketing Lead.', rank:'10L+ Impressions', year:'2024' },
+    { title:'Bioinformatics ML Challenge — Winner 🏆', desc:'Won the Bioinformatics Machine Learning Challenge at IIIT Nagpur 2025, competing against 300+ participants.', rank:'1st Place • 300+ participants', year:'2025', link:'#' },
+    { title:'CodeChef 2-Star', desc:'Achieved a 2-Star rating with a peak rating of 1568 in algorithmic contests on CodeChef.', rank:'2-Star • 1568', year:'2024', link:'https://www.codechef.com/users/piyush251004' },
+    { title:'LeetCode — 350+ Problems', desc:'Solved 350+ problems with a maximum rating of 1661; strong proficiency in DSA and algorithmic problem solving.', rank:'Max Rating: 1661', year:'2025', link:'https://leetcode.com/u/PiyushGuptra/' },
+    { title:'Tantrafiesta Official Website', desc:'Led development of the official fest site reaching 4,000+ global impressions using Tailwind CSS, GSAP, Locomotive Scroll, and Three.js.', rank:'4,000+ Impressions', year:'2024', link:'https://tantrafiesta.in/' },
+    { title:'Senior Marketing Team Member', desc:'Executed digital marketing strategies on Unstop as Senior Marketing Team Member, generating 10 Lakh+ impressions.', rank:'10L+ Impressions', year:'2024', link:'#' },
   ],
 
   learning: [
@@ -286,13 +298,16 @@ function renderLearning() {
 
 /* ── EXPERIENCE ─────────────────────────────────────────────── */
 function initExperience() {
-  const btn=$('exp-toggle'), details=$('exp-details');
-  if (!btn||!details) return;
-  btn.addEventListener('click',()=>{
-    const open=details.style.display==='none';
-    details.style.display=open?'':'none';
-    btn.setAttribute('aria-expanded',open);
-    btn.querySelector('.chevron').classList.toggle('open',open);
+  document.querySelectorAll('.exp-card').forEach(card => {
+    const btn     = card.querySelector('[data-exp-toggle]');
+    const details = card.querySelector('[data-exp-details]');
+    if (!btn || !details) return;
+    btn.addEventListener('click', () => {
+      const open = details.style.display === 'none';
+      details.style.display = open ? '' : 'none';
+      btn.setAttribute('aria-expanded', open);
+      btn.querySelector('.chevron').classList.toggle('open', open);
+    });
   });
 }
 
@@ -305,9 +320,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initDockSocial();
   initParticles();
 
-  // Resume buttons
+  // Resume buttons — open PDF in new tab
   document.querySelectorAll('#resume-btn, #resume-hero-btn').forEach(el => {
-    el.addEventListener('click', () => alert('Resume download coming soon!'));
+    el.addEventListener('click', () => {
+      window.open('resume.pdf', '_blank', 'noopener,noreferrer');
+    });
   });
 
   // Page-specific rendering
