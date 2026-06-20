@@ -35,7 +35,7 @@ const DATA = {
       title:'HostelMart | Campus Marketplace',
       desc:'A centralized peer-to-peer campus marketplace with the MERN stack, onboarding 10+ active users and reducing unstructured WhatsApp selling messages by 90%. Features scalable RESTful APIs, optimized MongoDB data modeling, dynamic category filtering, debounced search, JWT + Google OAuth authentication, and ImageKit-based cloud image upload.',
       tags:['React.js','Node.js','Express.js','MongoDB','JWT','Google OAuth','ImageKit','Multer'],
-      image:'images/HostelMart.png',
+      image:'assets/images/HostelMart.png',
       bg:'#1a0a2e', border:'#5b21b6',
       github:'https://github.com/PiyushG-git/HostelMate',
       live:'https://hostelmate-q8lq.onrender.com/',
@@ -44,7 +44,7 @@ const DATA = {
       title:'QueryDesk | AI-Powered Chat Platform',
       desc:'A production-grade full-stack AI platform integrating Google Gemini and Mistral AI via LangChain with Tavily API for autonomous real-time web search. Features a multi-session chatbot with persistent history and real-time LLM streaming via Socket.io, plus a Seller Agent System with configurable negotiation strategies accessible via unique shareable URLs.',
       tags:['React.js','Node.js','Express.js','MongoDB','LangChain','Socket.io','Google Gemini','Mistral AI'],
-      image:'images/QueryDesk.png',
+      image:'assets/images/QueryDesk.png',
       bg:'#0c1445', border:'#3730a3',
       github:'https://github.com/PiyushG-git/QueryDesk',
       live:'https://query-desk-puce.vercel.app/login',
@@ -53,7 +53,7 @@ const DATA = {
       title:'FixMyRoad | AI Road Damage Detector',
       desc:'An automated road damage assessment pipeline using Computer Vision with 92% detection accuracy on geo-tagged images. Features a secure, role-based Flask dashboard that reduced manual verification time by 40% through automated filtering, plus a priority-ranking algorithm that synthesizes community upvotes to escalate critical infrastructure failures.',
       tags:['Flask','MongoDB','Computer Vision','Python','Role-Based Auth'],
-      image:'images/projects/fixmyroad.png',
+      image:'assets/images/fixmyroad.png',
       bg:'#052e16', border:'#166534',
       github:'https://github.com/PiyushG-git/fixmyroad',
       live:'https://fixmyroad-65da.onrender.com/',
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Resume buttons — open PDF in new tab
   document.querySelectorAll('#resume-btn, #resume-hero-btn').forEach(el => {
     el.addEventListener('click', () => {
-      window.open('resume.pdf', '_blank', 'noopener,noreferrer');
+      window.open('assets/resume.pdf', '_blank', 'noopener,noreferrer');
     });
   });
 
