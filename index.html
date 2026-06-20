@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piyush Gupta | Full-Stack Developer at IIIT Nagpur</title>
+  <meta name="description" content="Piyush Gupta — ECE (IoT) student at IIIT Nagpur building scalable web apps and AI-powered tools with MERN, Flask, TypeScript, and Computer Vision." />
+  <meta property="og:title" content="Piyush Gupta | Full-Stack Developer" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body data-page="home">
+  <!-- Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+  <!-- Curtain -->
+  <div class="curtain"></div>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <div class="page-wrapper">
+    <div class="sidebar sidebar--left" aria-hidden="true"></div>
+    <div class="sidebar sidebar--right" aria-hidden="true"></div>
+    <div class="page-inner">
+
+      <!-- DOCK -->
+      <nav class="dock" id="dock" aria-label="Main navigation"><div class="dock-inner">
+        <a href="index.html" class="dock-item" data-nav="home" aria-label="Home"><span class="dock-tooltip">Home</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></a>
+        <a href="projects.html" class="dock-item" data-nav="projects" aria-label="Projects"><span class="dock-tooltip">Projects</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></a>
+        <a href="blog.html" class="dock-item" data-nav="blog" aria-label="Blog"><span class="dock-tooltip">Blog</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg></a>
+        <a href="mailto:piyushg251004@gmail.com" class="dock-item" aria-label="Let's Talk"><span class="dock-tooltip">Let's Talk</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+        <div class="dock-divider"></div>
+        <button class="dock-item" id="resume-btn" aria-label="Resume"><span class="dock-tooltip">Resume</span><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></button>
+        <div class="dock-divider"></div>
+        <button class="dock-item" id="theme-toggle" aria-label="Toggle theme"><span class="dock-tooltip" id="theme-tooltip">Light Mode</span><svg id="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2m-4.34 5.66-1.41 1.41M6.34 6.34 4.93 4.93"/></svg><svg id="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+        <div class="dock-divider"></div>
+        <div class="social-wrapper" id="social-wrapper">
+          <div class="social-stack" id="social-stack">
+            <a href="https://github.com/PiyushG-git" target="_blank" rel="noopener noreferrer" class="social-item" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+            <a href="https://www.linkedin.com/in/piyush-gupta-019a79283/" target="_blank" rel="noopener noreferrer" class="social-item" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <!-- <a href="" target="_blank" rel="noopener noreferrer" class="social-item" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a> -->
+            <a href="mailto:contact.piyushg251004@gmail.com" class="social-item" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3.5"/><path stroke-linecap="round" d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+          </div>
+          <button class="dock-item social-trigger" id="social-trigger" aria-label="Social links" aria-expanded="false"><span class="dock-tooltip">Social</span><svg id="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg><svg id="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        </div>
+      </div></nav>
+
+      <!-- MAIN -->
+      <main class="pb-28">
+
+        <!-- HERO -->
+        <section id="hero" class="section">
+          <!-- Three.js canvas -->
+          <canvas id="hero-canvas"></canvas>
+          <div class="container">
+            <div class="hero-layout">
+              <div class="avatar-ring">
+                <img src="images/avatar.png" alt="Piyush Gupta" class="avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+                <div class="avatar-fallback" style="display:none">PG</div>
+              </div>
+              <div class="hero-text">
+                <p class="detail-label">ECE (IoT) Student &amp; Full-Stack Developer | IIIT Nagpur</p>
+                <h1 class="hero-name">Piyush Gupta</h1>
+                <p class="section-lead">I'm a full-stack developer and ECE (IoT) student at IIIT Nagpur who loves turning ideas into real, working products. I build scalable web applications and AI-powered tools — from social media platforms to computer vision pipelines — with a focus on clean code, performance, and great user experiences.</p>
+              </div>
+              <div class="hero-actions">
+                <button class="btn-outline" id="resume-hero-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                  Resume / CV
+                </button>
+                <div class="social-links-row">
+                  <a href="https://github.com/piyushg251004" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg><span class="social-link-tooltip">GitHub</span></a>
+                  <a href="https://linkedin.com/in/piyush-gupta" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link-btn"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg><span class="social-link-tooltip">LinkedIn</span></a>
+                  <a href="https://leetcode.com/piyushg251004" target="_blank" rel="noopener noreferrer" aria-label="LeetCode" class="social-link-btn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span class="social-link-tooltip">Twitter / X</span></a>
+                  <a href="mailto:piyushg251004@gmail.com" rel="noopener noreferrer" aria-label="Email" class="social-link-btn"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="3.5"/><path stroke-linecap="round" d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span class="social-link-tooltip">Email</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <div class="marquee-inner">Full-Stack Developer <span class="sep">/</span> MERN Stack <span class="sep">/</span> React.js <span class="sep">/</span> Node.js <span class="sep">/</span> Flask <span class="sep">/</span> Computer Vision <span class="sep">/</span> TypeScript <span class="sep">/</span> IIIT Nagpur <span class="sep">/</span> Open Source <span class="sep">/</span> UI/UX</div>
+          </div>
+        </div>
+
+        <!-- TECH STACK -->
+        <section id="tech-stack" class="section">
+          <div class="container">
+            <p class="detail-label">Capabilities</p>
+            <h2 class="section-heading">Tech Stack</h2>
+            <p class="section-lead mb-10">Core tools I use to build scalable applications.</p>
+            <div class="tech-grid" id="tech-grid"></div>
+          </div>
+        </section>
+
+        <!-- GITHUB ACTIVITY -->
+        <section id="github-graph" class="section">
+          <div class="container">
+            <p class="detail-label">Open Source</p>
+            <h2 class="section-heading mb-12">GitHub Activity</h2>
+            <div class="graph-header">
+              <span>GitHub Contributions</span><span class="dot"></span>
+              <a href="https://github.com/piyushg251004" target="_blank" rel="noopener noreferrer" class="graph-username">@piyushg251004</a>
+            </div>
+            <div class="graph-scroll"><svg id="contribution-graph" viewBox="0 0 914 164" class="graph-svg"></svg></div>
+            <div class="graph-footer">
+              <span class="graph-total" id="graph-total">— contributions in the last year</span>
+              <div class="graph-legend"><span>Less</span><div class="legend-dots" id="legend-dots"></div><span>More</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS PREVIEW -->
+        <section id="projects-preview" class="section">
+          <div class="container">
+            <div class="projects-header">
+              <div><p class="detail-label">Selected Work</p><h2 class="section-heading">Projects</h2></div>
+              <p class="section-lead text-right">Two representative builds. Full archive on the projects page.</p>
+            </div>
+            <div class="projects-grid" id="projects-grid"></div>
+            <div class="view-all-wrap">
+              <a href="projects.html" class="btn-ghost" data-internal>View all projects <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+            </div>
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="section">
+          <div class="container">
+            <p class="detail-label">Experience</p>
+            <h2 class="section-heading mb-10">Work experience</h2>
+
+            <div class="exp-card card" style="margin-bottom:1rem">
+              <div class="card-glow"></div>
+              <div class="exp-inner">
+                <div class="exp-left">
+                  <div class="company-logo" style="font-size:1.25rem;font-weight:700;color:var(--accent)">T</div>
+                  <div>
+                    <h3 class="exp-title">Web Development Co-Lead</h3>
+                    <p class="exp-meta"><a href="#" class="company-link">Tantrafiesta</a><span class="meta-dot">•</span><span>IIIT Nagpur • Fest</span></p>
+                  </div>
+                </div>
+                <div class="exp-right">
+                  <span class="date-badge">2024</span>
+                  <button class="expand-btn" id="exp-toggle" aria-expanded="false"><svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+                </div>
+              </div>
+              <div class="exp-details" id="exp-details" style="display:none">
+                <ul class="exp-bullets">
+                  <li>Led the development of the official fest website using Tailwind CSS, GSAP, Locomotive Scroll, and Three.js.</li>
+                  <li>Managed a developer team and delivered a high-impact website with 4,000+ global impressions.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="exp-card card">
+              <div class="card-glow"></div>
+              <div class="exp-inner">
+                <div class="exp-left">
+                  <div class="company-logo" style="font-size:1.25rem;font-weight:700;color:var(--accent)">A</div>
+                  <div>
+                    <h3 class="exp-title">Senior Marketing Team Member</h3>
+                    <p class="exp-meta"><a href="#" class="company-link">Abhivyakti Cultural Fest</a><span class="meta-dot">•</span><span>IIIT Nagpur</span></p>
+                  </div>
+                </div>
+                <div class="exp-right"><span class="date-badge">2024</span></div>
+              </div>
+              <div style="padding:0 2rem 1.5rem">
+                <ul class="exp-bullets">
+                  <li>Executed marketing strategies to improve outreach and participation.</li>
+                  <li>Generated 10 Lakh+ impressions through digital campaigns on Unstop.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="section">
+          <div class="container">
+            <p class="detail-label">Education</p>
+            <h2 class="section-heading mb-10">Academic foundation</h2>
+            <div class="card edu-card">
+              <div class="card-glow"></div>
+              <div class="edu-inner">
+                <div class="edu-left">
+                  <div class="edu-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+                  <div><h3 class="edu-school">Indian Institute of Information Technology, Nagpur</h3><p class="edu-degree">B.Tech in Electronics and Communication Engineering (IoT) • Nagpur</p></div>
+                </div>
+                <div class="edu-right"><span class="date-badge">August 2023 — May 2027</span><span class="cgpa-badge">CGPA: 7.67</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACHIEVEMENTS -->
+        <section id="achievements" class="section">
+          <div class="container">
+            <p class="detail-label">Highlights</p>
+            <h2 class="section-heading mb-8">Recognition &amp; Milestones</h2>
+            <div class="achievements-list" id="achievements-list"></div>
+            <div class="show-more-wrap">
+              <button class="btn-show-more" id="show-more-btn"><span id="show-more-text">Show 5 more milestones</span><svg class="chevron" id="show-more-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- CURRENTLY LEARNING -->
+        <section id="currently-learning" class="section">
+          <div class="container">
+            <div class="learning-header">
+              <div><p class="detail-label">Continuous Growth</p><h2 class="section-heading">What I'm focused on</h2></div>
+              <button class="expand-btn" id="learning-toggle" aria-expanded="false"><span class="expand-label">View details</span><svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <div class="learning-grid" id="learning-grid" style="display:none"></div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer class="footer"><div class="container footer-inner"><p class="footer-copy">&copy; 2025 Piyush Gupta</p><p class="footer-built">Built with HTML, CSS &amp; JavaScript.</p></div></footer>
+    </div>
+  </div>
+  <script src="portfolio.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="animations.js"></script>
+</body>
+</html>
