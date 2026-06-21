@@ -1,4 +1,102 @@
+/* ── LOADER FONTS ───────────────────────────────────────────── */
+/* Removed old local fonts, using native portfolio fonts */
+
+/* ── LOADER ─────────────────────────────────────────────────── */
+#pg-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: #030303;
+  padding: 25vh 10vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pg-loader-line {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3vw;
+  height: fit-content;
+  width: 100%;
+}
+
+#pg-loader-counter {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  margin-left: auto;
+}
+
+.pg-loader-num,
+.pg-loader-of {
+  font-size: 3vw;
+  font-weight: 400;
+  font-style: italic;
+  font-family: 'Instrument Serif', serif;
+  color: #f0ece6;
+  line-height: 1;
+}
+
+.pg-loader-num {
+  width: 5vw;
+  text-align: right;
+  display: inline-block;
+}
+
+.pg-loader-word {
+  font-size: 5.5vw;
+  font-weight: 600;
+  font-family: 'Hanken Grotesk', sans-serif;
+  color: #f0ece6;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.pg-loader-now {
+  font-size: 5vw;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-family: 'Hanken Grotesk', sans-serif;
+  color: #f0ece6;
+  opacity: 0;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  line-height: 1.1;
+  margin: 0;
+}
+
+@keyframes pg-loader-now-flash {
+  0% {
+    font-family: 'pg-plain-light', sans-serif;
+    -webkit-text-stroke: 1px #fff;
+    color: #fff;
+    opacity: 1;
+  }
+  48% {
+    font-family: 'pg-plain-light', sans-serif;
+    -webkit-text-stroke: 1px #fff;
+    color: #fff;
+    opacity: 0;
+  }
+  50% {
+    font-family: 'pg-silk-serif', serif;
+    -webkit-text-stroke: 1px #fff;
+    color: transparent;
+    opacity: 1;
+  }
+  100% {
+    font-family: 'pg-silk-serif', serif;
+    -webkit-text-stroke: 1px #fff;
+    color: transparent;
+    opacity: 0;
+  }
+}
+
 /* ── CSS VARIABLES ─────────────────────────────────────────── */
+
 :root {
   --bg: #0c0c0c;
   --surface: #141414;
@@ -109,7 +207,7 @@ ul {
 .sidebar::before {
   content: '';
   position: absolute;
-  inset: 0;
+  /* inset: 0; */
   border: 1px solid var(--fg);
   opacity: .05;
   background-image: repeating-linear-gradient(-45deg, transparent, transparent 2px, currentColor 2px, currentColor 3px, transparent 3px, transparent 6px)
@@ -1518,11 +1616,6 @@ main { animation: pageIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
   pointer-events: none; z-index: 99998; opacity: 0.8;
 }
 
-/* ── PAGE CURTAIN ──────────────────────────────────────────── */
-.curtain {
-  position: fixed; inset: 0; background: var(--accent);
-  z-index: 99990; transform: scaleY(0); transform-origin: top; pointer-events: none;
-}
 
 /* ── THREE.JS HERO CANVAS ──────────────────────────────────── */
 #hero-canvas {
@@ -1532,16 +1625,12 @@ main { animation: pageIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
 #hero { position: relative; overflow: hidden; }
 #hero .container { position: relative; z-index: 1; }
 
-/* ── GRADIENT HERO NAME ────────────────────────────────────── */
+/* ── HERO NAME ───────────────────────────────────────────────── */
 .hero-name {
   background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 55%, var(--fg) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; background-size: 200%;
-  animation: gradientShift 6s ease infinite;
-}
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ── MARQUEE TICKER ────────────────────────────────────────── */
@@ -1565,15 +1654,7 @@ main { animation: pageIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
 /* ── PERSPECTIVE FOR TILT ──────────────────────────────────── */
 .projects-grid, .project-list { perspective: 1200px; }
 
-/* ── GLITCH HOVER ON NAME ──────────────────────────────────── */
-.hero-name:hover { animation: glitch 0.4s steps(2) forwards, gradientShift 6s ease infinite; }
-@keyframes glitch {
-  0%   { text-shadow: 2px 0 #d4a574, -2px 0 #8b4513; }
-  25%  { text-shadow: -2px 0 #d4a574, 2px 0 #8b4513; clip-path: inset(10% 0 80% 0); }
-  50%  { text-shadow: 2px 2px #d4a574, -2px -2px #8b4513; }
-  75%  { clip-path: inset(60% 0 20% 0); }
-  100% { text-shadow: none; clip-path: none; }
-}
+
 
 /* ── SMOOTH SECTION REVEAL ─────────────────────────────────── */
 .section { opacity: 1; transform: none; }

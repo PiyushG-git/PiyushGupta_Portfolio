@@ -1,7 +1,67 @@
+;(function () {
 'use strict';
 gsap.registerPlugin(ScrollTrigger);
 
 const PAGE = document.body.dataset.page || 'home';
+
+/* ── 0. LOADING ANIMATION (self-contained — no portfolio elements touched) ── */
+function initLoadingAnimation() {
+  const loader = document.getElementById('pg-loader');
+  if (!loader || PAGE !== 'home') return;
+  // NOTE: No overflow:hidden needed — loader is position:fixed over everything.
+
+
+  var tl = gsap.timeline({
+    onComplete: function () {
+      // Recalculate all ScrollTrigger positions now that loader is gone
+      ScrollTrigger.refresh();
+      // Then run hero entrance
+      initHeroEntrance();
+    }
+  });
+
+  // 1. Words slide up from below
+  tl.from('.pg-loader-word', {
+    y: 150,
+    stagger: 0.25,
+    duration: 0.6,
+    delay: 0.3,
+    ease: 'power4.out',
+  });
+
+  // 2. Counter appears + counts 00 to 100
+  tl.from('#pg-loader-counter', {
+    opacity: 0,
+    duration: 0.1,
+    onStart: function () {
+      var numEl = document.querySelector('.pg-loader-num');
+      var grow = 0;
+      var counter = setInterval(function () {
+        if (grow < 100) {
+          numEl.textContent = String(grow++).padStart(2, '0');
+        } else {
+          numEl.textContent = '100';
+          clearInterval(counter);
+        }
+      }, 27);
+    },
+  });
+
+
+  // 4. Fade out and hide — only touches #pg-loader
+  tl.to('#pg-loader', {
+    opacity: 0,
+    duration: 0.4,
+    delay: 2.4,
+    ease: 'power2.in',
+    onComplete: function () {
+      loader.style.display = 'none';
+    },
+  });
+
+  return tl;
+}
+
 
 /* ── 1. CUSTOM CURSOR ─────────────────────────────────────── */
 function initCursor() {
@@ -72,25 +132,6 @@ function initThreeHero() {
   })();
 }
 
-/* ── 3. PAGE TRANSITION CURTAIN ───────────────────────────── */
-function initPageTransition() {
-  const curtain = document.querySelector('.curtain');
-  if (!curtain) return;
-  // Curtain starts hidden (CSS: scaleY:0). Animate in only when leaving.
-  document.querySelectorAll('a[href]').forEach(link => {
-    const attr = link.getAttribute('href') || '';
-    if (!attr || attr.startsWith('http') || attr.startsWith('mailto') || attr === '#' || attr.startsWith('#')) return;
-    link.addEventListener('click', e => {
-      if (e.defaultPrevented) return;
-      e.preventDefault();
-      const dest = link.href;
-      gsap.fromTo(curtain,
-        { scaleY: 0, transformOrigin: 'bottom' },
-        { scaleY: 1, duration: 0.65, ease: 'power4.in', onComplete: () => { location.href = dest; } }
-      );
-    });
-  });
-}
 
 /* ── 4. HERO ENTRANCE ─────────────────────────────────────── */
 function initHeroEntrance() {
@@ -100,15 +141,10 @@ function initHeroEntrance() {
   const lead   = document.querySelector('.section-lead');
   const actions = document.querySelector('.hero-actions');
   const avatar  = document.querySelector('.avatar-ring');
-  if (!nameEl) return;
-  const raw = nameEl.textContent.trim();
-  nameEl.innerHTML = raw.split('').map(c => `<span class="char" style="display:inline-block">${c === ' ' ? '&nbsp;' : c}</span>`).join('');
-  const tl = gsap.timeline({ delay: 1 });
+  const tl = gsap.timeline();
   tl.from(avatar,  { scale: 0.4, opacity: 0, duration: 0.7, ease: 'back.out(2)' })
-    .from(label,   { y: 18, opacity: 0, duration: 0.5, ease: 'power3.out' }, '-=0.35')
-    .from(nameEl.querySelectorAll('.char'), { y: 70, opacity: 0, rotateX: -90, stagger: 0.022, duration: 0.65, ease: 'power4.out' }, '-=0.3')
-    .from(lead,    { y: 25, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.25')
-    .from(actions ? Array.from(actions.children) : [], { y: 18, opacity: 0, stagger: 0.1, duration: 0.45, ease: 'power3.out' }, '-=0.35');
+    .from([label, nameEl, lead], { y: 20, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'power3.out' }, '-=0.4')
+    .from(actions ? Array.from(actions.children) : [], { y: 18, opacity: 0, stagger: 0.1, duration: 0.45, ease: 'power3.out' }, '-=0.3');
 }
 
 /* ── 5. SCROLLTRIGGER REVEALS ────────────────────────────── */
@@ -119,10 +155,7 @@ function initScrollReveal() {
   gsap.utils.toArray('.detail-label').forEach(el =>
     gsap.from(el, { x: -20, opacity: 0, duration: 0.5, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%' } })
   );
-  const techGrid = document.getElementById('tech-grid');
-  if (techGrid) ScrollTrigger.create({ trigger: techGrid, start: 'top 85%', onEnter: () =>
-    gsap.from(Array.from(techGrid.children), { y: 28, opacity: 0, scale: 0.85, stagger: { each: 0.045, from: 'random' }, duration: 0.5, ease: 'back.out(1.7)' })
-  });
+
   gsap.utils.toArray('.project-card, .project-row').forEach(el =>
     gsap.from(el, { y: 55, opacity: 0, duration: 0.85, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%' } })
   );
@@ -169,9 +202,17 @@ function initCardTilt() {
 function initCounters() {
   document.querySelectorAll('[data-count]').forEach(el => {
     const target = +el.dataset.count;
-    ScrollTrigger.create({ trigger: el, start: 'top 85%', onEnter: () => {
-      gsap.to({ val: 0 }, { val: target, duration: 1.8, ease: 'power2.out', onUpdate: function() { el.textContent = Math.round(this.targets()[0].val) + (el.dataset.suffix || ''); } });
-    }});
+    ScrollTrigger.create({ 
+      trigger: el, 
+      start: 'top 85%', 
+      once: true,
+      onEnter: () => {
+        gsap.fromTo({ val: 0 }, 
+          { val: 0 },
+          { val: target, duration: 1.2, ease: 'power2.out', onUpdate: function() { el.textContent = Math.round(this.targets()[0].val) + (el.dataset.suffix || ''); } }
+        );
+      }
+    });
   });
 }
 
@@ -207,9 +248,13 @@ function initNoise() {
 
 /* ── INIT ─────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+  // Loader runs first on home page; hero entrance is handled inside loader timeline
+  const loaderTimeline = initLoadingAnimation();
+  const hasLoader = !!loaderTimeline;
+
   initCursor();
-  initPageTransition();
-  initHeroEntrance();
+  // Only run standalone hero entrance if no loader (other pages)
+  if (!hasLoader) initHeroEntrance();
   initScrollReveal();
   initMagnetic();
   initCardTilt();
@@ -218,3 +263,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initNoise();
   if (PAGE === 'home') initThreeHero();
 });
+
+})(); // end IIFE

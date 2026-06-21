@@ -53,7 +53,7 @@ const DATA = {
       title:'FixMyRoad | AI Road Damage Detector',
       desc:'An automated road damage assessment pipeline using Computer Vision with 92% detection accuracy on geo-tagged images. Features a secure, role-based Flask dashboard that reduced manual verification time by 40% through automated filtering, plus a priority-ranking algorithm that synthesizes community upvotes to escalate critical infrastructure failures.',
       tags:['Flask','MongoDB','Computer Vision','Python','Role-Based Auth'],
-      image:'assets/images/fixmyroad.png',
+      image:'assets/images/fixmyroad.jpg',
       bg:'#052e16', border:'#166534',
       github:'https://github.com/PiyushG-git/fixmyroad',
       live:'https://fixmyroad-65da.onrender.com/',
