@@ -20,16 +20,16 @@ function initLoadingAnimation() {
     }
   });
 
-  // 1. Words slide up from below
+  // 1. Words slide up from below — fast
   tl.from('.pg-loader-word', {
-    y: 150,
-    stagger: 0.25,
-    duration: 0.6,
-    delay: 0.3,
+    y: 80,
+    stagger: 0.12,
+    duration: 0.4,
+    delay: 0.1,
     ease: 'power4.out',
   });
 
-  // 2. Counter appears + counts 00 to 100
+  // 2. Counter appears + counts 00 to 100 (12ms × 100 = 1.2s)
   tl.from('#pg-loader-counter', {
     opacity: 0,
     duration: 0.1,
@@ -43,16 +43,15 @@ function initLoadingAnimation() {
           numEl.textContent = '100';
           clearInterval(counter);
         }
-      }, 27);
+      }, 12);
     },
   });
 
-
-  // 4. Fade out and hide — only touches #pg-loader
+  // 3. Fade out — starts 0.9s after counter begins, takes 0.3s
   tl.to('#pg-loader', {
     opacity: 0,
-    duration: 0.4,
-    delay: 2.4,
+    duration: 0.3,
+    delay: 0.9,
     ease: 'power2.in',
     onComplete: function () {
       loader.style.display = 'none';

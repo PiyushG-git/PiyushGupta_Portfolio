@@ -172,25 +172,57 @@ function initParticles() {
 }
 
 /* ── GITHUB GRAPH ───────────────────────────────────────────── */
-function renderGitHubGraph() {
+async function renderGitHubGraph() {
   const svg = $('contribution-graph'); if (!svg) return;
   const totalEl = $('graph-total'), legendEl = $('legend-dots');
   const WEEKS=53, DAYS=7, W=17, GAP=2, OX=8, OY=30;
-  const MONTHS=['May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May'];
-  const MX=[8,76,144,212,297,365,433,518,586,671,739,807,875];
-  const data=DATA.contributions, max=Math.max(...data);
-  function op(c) { if(!c) return .14; const r=c/max; return r<.2?.34:r<.4?.52:r<.7?.72:.92; }
-  let html='';
-  MONTHS.forEach((m,i)=>{ html+=`<text x="${MX[i]}" y="13" font-size="11" style="fill:var(--muted)">${m}</text>`; });
-  let total=0;
-  for(let w=0;w<WEEKS;w++) for(let d=0;d<DAYS;d++) {
-    const idx=d*WEEKS+w, count=data[idx]||0; total+=count;
-    const x=OX+w*(W+GAP), y=OY+d*(W+GAP);
-    html+=`<rect x="${x}" y="${y}" width="14" height="14" rx="2" fill="rgba(212,165,116,${op(count)})" stroke="var(--border)" stroke-width="0.5"/>`;
+  const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  function drawGraph(data) {
+    const max = Math.max(...data, 1);
+    function op(c) { if(!c) return .14; const r=c/max; return r<.2?.34:r<.4?.52:r<.7?.72:.92; }
+    // Calculate month label positions from today going back 53 weeks
+    const today = new Date();
+    let html = '';
+    // Month labels
+    const monthPositions = {};
+    for (let w = WEEKS - 1; w >= 0; w--) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - (WEEKS - 1 - w) * 7);
+      const key = `${d.getFullYear()}-${d.getMonth()}`;
+      if (!monthPositions[key]) monthPositions[key] = OX + w * (W + GAP);
+    }
+    Object.entries(monthPositions).forEach(([key, x]) => {
+      const month = parseInt(key.split('-')[1]);
+      html += `<text x="${x}" y="13" font-size="11" style="fill:var(--muted)">${MONTHS[month]}</text>`;
+    });
+    let total = 0;
+    for (let w = 0; w < WEEKS; w++) for (let d = 0; d < DAYS; d++) {
+      const idx = w * DAYS + d, count = data[idx] || 0; total += count;
+      const x = OX + w * (W + GAP), y = OY + d * (W + GAP);
+      html += `<rect x="${x}" y="${y}" width="14" height="14" rx="2" fill="rgba(212,165,116,${op(count)})" stroke="var(--border)" stroke-width="0.5"/>`;
+    }
+    svg.innerHTML = html;
+    if (totalEl) totalEl.textContent = `${total.toLocaleString()} contributions in the last year`;
+    if (legendEl) legendEl.innerHTML = [.14,.34,.52,.72,.92].map(o=>`<div class="legend-dot" style="background:rgba(212,165,116,${o})"></div>`).join('');
   }
-  svg.innerHTML=html;
-  if (totalEl) totalEl.textContent=`${total.toLocaleString()} contributions in the last year`;
-  if (legendEl) legendEl.innerHTML=[.14,.34,.52,.72,.92].map(o=>`<div class="legend-dot" style="background:rgba(212,165,116,${o})"></div>`).join('');
+
+  try {
+    // Use GitHub's public contributions API via a lightweight proxy
+    const res = await fetch('https://github-contributions-api.jogruber.de/v4/PiyushG-git?y=last');
+    if (!res.ok) throw new Error('API error');
+    const json = await res.json();
+    // Flatten contributions into a flat array of 371 daily values (53w × 7d)
+    const flat = [];
+    json.contributions.forEach(week => week.contributionDays.forEach(d => flat.push(d.contributionCount)));
+    drawGraph(flat);
+  } catch (e) {
+    // Fallback: draw empty graph with a note
+    const flat = new Array(WEEKS * DAYS).fill(0);
+    drawGraph(flat);
+    if (totalEl) totalEl.textContent = 'GitHub activity unavailable';
+    console.warn('GitHub graph fetch failed:', e);
+  }
 }
 
 /* ── TECH STACK ─────────────────────────────────────────────── */
