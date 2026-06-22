@@ -6,7 +6,7 @@
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background-color: #030303;
+  background-color: var(--bg);
   padding: 25vh 10vw;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
   font-weight: 400;
   font-style: italic;
   font-family: 'Instrument Serif', serif;
-  color: #f0ece6;
+  color: var(--fg);
   line-height: 1;
 }
 
@@ -50,7 +50,7 @@
   font-size: 5.5vw;
   font-weight: 600;
   font-family: 'Hanken Grotesk', sans-serif;
-  color: #f0ece6;
+  color: var(--fg);
   line-height: 1.1;
   margin: 0;
 }
@@ -731,8 +731,8 @@ html.light .graph-live-img {
 
 .project-tag {
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, .07);
-  background: rgba(240, 236, 230, .05);
+  border: 1px solid var(--border);
+  background: var(--surface-subtle);
   padding: .375rem .75rem;
   font-size: .6875rem;
   font-weight: 600;
@@ -774,7 +774,7 @@ html.light .graph-live-img {
   padding: .5rem 1rem;
   border-radius: 9999px;
   border: 1px solid var(--border);
-  background: rgba(240, 236, 230, .05);
+  background: var(--surface-subtle);
   color: var(--fg);
   font-size: .875rem;
   font-weight: 600;
@@ -907,7 +907,7 @@ html.light .graph-live-img {
 }
 
 .company-link {
-  color: rgba(240, 236, 230, .9);
+  color: var(--fg);
   transition: color .2s
 }
 
@@ -1097,7 +1097,7 @@ html.light .graph-live-img {
   gap: .5rem;
   justify-content: space-between;
   padding: 1rem .5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, .05);
+  border-bottom: 1px solid var(--border-subtle);
   border-radius: .5rem;
   transition: background .3s;
   opacity: 0;
@@ -1628,6 +1628,14 @@ main { animation: pageIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
 /* ── HERO NAME ───────────────────────────────────────────────── */
 .hero-name {
   background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 55%, var(--fg) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* In light mode, use a darker gradient so it's visible on white background */
+html.light .hero-name {
+  background: linear-gradient(135deg, #1a1a1a 0%, var(--accent) 50%, #3a2010 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
